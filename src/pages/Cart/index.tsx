@@ -62,7 +62,7 @@ const Cart = (): JSX.Element => {
         </thead>
         <tbody>
           {cart.map((product) => (
-            <tr key={`product-${product.id}`}>
+            <tr data-testid="product" key={`product-${product.id}`}>
               <td>
                 <img src={product.image} alt={product.title} />
               </td>
@@ -74,7 +74,7 @@ const Cart = (): JSX.Element => {
                 <div>
                   <button
                     type="button"
-                    data-testid={`decrement-product-${product.id}`}
+                    data-testid="decrement-product"
                     disabled={product.amount <= 1}
                     onClick={() => handleProductDecrement(product)}
                   >
@@ -82,13 +82,13 @@ const Cart = (): JSX.Element => {
                   </button>
                   <input
                     type="text"
-                    data-testid={`product-amount-${product.id}`}
+                    data-testid="product-amount"
                     readOnly
                     value={product.amount}
                   />
                   <button
                     type="button"
-                    data-testid={`increment-product-${product.id}`}
+                    data-testid="increment-product"
                     onClick={() => handleProductIncrement(product)}
                   >
                     <MdAddCircleOutline size={20} />
@@ -101,7 +101,7 @@ const Cart = (): JSX.Element => {
               <td>
                 <button
                   type="button"
-                  data-testid={`remove-product-${product.id}`}
+                  data-testid="remove-product"
                   onClick={() => handleRemoveProduct(product.id)}
                 >
                   <MdDelete size={20} />
