@@ -20,7 +20,7 @@ const Header = (): JSX.Element => {
         <div>
           <strong>Meu carrinho</strong>
           <span data-testid="cart-size">
-            {`${cartSize} ${cartSize === 1 ? "item" : "items"}`}
+            {`${cartSize} ${cartSize === 1 ? "item" : "itens"}`}
           </span>
         </div>
         <MdShoppingBasket size={36} color="#FFF" />

@@ -39,22 +39,21 @@ const Home = (): JSX.Element => {
 
   useEffect(() => {
     async function loadProducts() {
-      api
-        .get("products")
-        .then(({ data }) => {
-          setProducts(
-            data.map((product: Product) => ({
-              ...product,
-              price: formatPrice(product.price),
-            }))
-          );
-        })
-        .catch(() => {
-          toast("Não foi possível carregar os produtos, tente mais tarde", {
-            type: "error",
-            autoClose: 3000,
-          });
+      try {
+        const { data } = await api.get("products");
+
+        setProducts(
+          data.map((product: Product) => ({
+            ...product,
+            price: formatPrice(product.price),
+          }))
+        );
+      } catch (error) {
+        toast("Não foi possível carregar os produtos, tente mais tarde", {
+          type: "error",
+          autoClose: 3000,
         });
+      }
     }
 
     loadProducts();
